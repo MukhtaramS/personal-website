@@ -36,28 +36,29 @@ const PROJECTS = [
     des: "Comprehensive hotel management dashboard with booking administration, room inventory, guest management, and analytics. Built with React and Supabase. University project at UCA.",
     link: "https://github.com/MukhtaramS/hotel-management-system",
     language: "React, Supabase, JavaScript",
-    emoji: "🏨",
+    gif: "/gif/hotel-dashboard.gif",
   },
   {
     name: "GolonilApp",
     des: "Digital companion app for the ancient Persian game Gol ya Pooch — a game of strategy, tricking, and guessing. Built natively for iOS with Swift and SwiftUI.",
     link: "https://github.com/MukhtaramS/GolonilApp",
     language: "Swift, SwiftUI, CoreML",
-    emoji: "🎮",
+    gif: "/gif/GolonilGif.gif",
   },
   {
     name: "Hotel Booking Platform",
     des: "A modern hotel booking platform with real-time availability, interactive room selection, and seamless reservations. Features a clean UI and responsive design.",
     link: "https://github.com/MukhtaramS/HotelBookingPlatform",
     language: "React, JavaScript, Supabase",
-    emoji: "🛏️",
+    gif: "/gif/HotelWebsiteGif.gif",
   },
   {
-    name: "TravelApp",
-    des: "iOS travel companion application for exploring destinations, planning trips, and sharing travel experiences. Built with native Apple frameworks and MapKit integration.",
-    link: "https://github.com/MukhtaramS/TravelApp",
+    name: "Benazir Pack Group Website",
+    des: " professional business website developed for a packaging manufacturing company to showcase products, company information, and enable direct client inquiries. Designed with a clean layout and responsive structure to improve online presence and accessibility for international B2B customers.",
+    link: "https://github.com/MukhtaramS/BEN",
     language: "Swift, SwiftUI, MapKit",
-    emoji: "✈️",
+    gif: "/gif/BPG.gif",
+    demo: "https://benazirpackgroup.com" 
   },
 ];
 
@@ -497,18 +498,21 @@ function ProjectsSection({ addRef }) {
               >
                 <div
                   style={{
-                    fontSize: 80,
-                    background: "rgba(255,255,255,0.1)",
                     borderRadius: 20,
-                    width: 140,
-                    height: 140,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    boxShadow: "0 20px 40px rgba(1,8,36,0.5)",
+                    overflow: "hidden",
+                    boxShadow: "0 30px 60px rgba(0,0,0,0.4)",
                   }}
                 >
-                  {p.emoji}
+                  <img
+                    src={p.gif}
+                    alt={p.name}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      borderRadius: 20,
+                    }}
+                  />
                 </div>
               </div>
 
@@ -541,16 +545,28 @@ function ProjectsSection({ addRef }) {
                   </div>
                 </div>
                 <div style={{ display: "flex", gap: 10, marginTop: 20 }}>
-                  <a
-                    href={p.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-outline"
-                    style={{ fontSize: 14, padding: "10px 15px" }}
-                  >
-                    GitHub Code
-                  </a>
-                </div>
+  <a
+    href={p.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn-outline"
+    style={{ fontSize: 14, padding: "10px 15px" }}
+  >
+    GitHub Code
+  </a>
+
+  {p.demo && (
+    <a
+      href={p.demo}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="btn-primary"
+      style={{ fontSize: 14, padding: "10px 15px" }}
+    >
+      Live Demo
+    </a>
+  )}
+</div>
               </div>
             </div>
           );
