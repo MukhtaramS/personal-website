@@ -57,7 +57,7 @@ const PROJECTS = [
     des: " professional business website developed for a packaging manufacturing company to showcase products, company information, and enable direct client inquiries. Designed with a clean layout and responsive structure to improve online presence and accessibility for international B2B customers.",
     link: "https://github.com/MukhtaramS/BEN",
     language: "Swift, SwiftUI, MapKit",
-    gif: "/gif/BPG.gif",
+    gif: "/gif/ben.gif",
     demo: "https://benazirpackgroup.com" 
   },
 ];
