@@ -241,6 +241,133 @@ function NavBar({ active, onNav }) {
 }
 
 // ═══════════════════════════════════════════════════════════
+// NEURAL NETWORK BACKGROUND
+// ═══════════════════════════════════════════════════════════
+
+function NeuralCanvas() {
+  const canvasRef = useRef(null);
+  const mouseRef = useRef({ x: -9999, y: -9999 });
+  const nodesRef = useRef([]);
+  const rafRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+    window.addEventListener("resize", resize);
+
+    const NODE_COUNT = 80;
+    const MAX_DIST = 160;
+    const REPEL_DIST = 100;
+    const REPEL_FORCE = 3;
+
+    nodesRef.current = Array.from({ length: NODE_COUNT }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.6,
+      vy: (Math.random() - 0.5) * 0.6,
+      r: Math.random() * 2 + 1.5,
+    }));
+
+    const draw = () => {
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const nodes = nodesRef.current;
+      const mx = mouseRef.current.x;
+      const my = mouseRef.current.y;
+
+      for (const n of nodes) {
+        const dx = n.x - mx;
+        const dy = n.y - my;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < REPEL_DIST && dist > 0) {
+          const force = (REPEL_DIST - dist) / REPEL_DIST * REPEL_FORCE;
+          n.vx += (dx / dist) * force * 0.08;
+          n.vy += (dy / dist) * force * 0.08;
+        }
+
+        n.vx *= 0.98;
+        n.vy *= 0.98;
+        n.x += n.vx;
+        n.y += n.vy;
+
+        if (n.x < 0) { n.x = 0; n.vx *= -1; }
+        if (n.x > w) { n.x = w; n.vx *= -1; }
+        if (n.y < 0) { n.y = 0; n.vy *= -1; }
+        if (n.y > h) { n.y = h; n.vy *= -1; }
+      }
+
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < MAX_DIST) {
+            const alpha = (1 - dist / MAX_DIST) * 0.35;
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(233,69,227,${alpha})`;
+            ctx.lineWidth = 0.8;
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      for (const n of nodes) {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(233,69,227,0.7)";
+        ctx.fill();
+      }
+
+      rafRef.current = requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    const onMove = (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const src = e.touches ? e.touches[0] : e;
+      mouseRef.current = { x: src.clientX - rect.left, y: src.clientY - rect.top };
+    };
+    const onLeave = () => { mouseRef.current = { x: -9999, y: -9999 }; };
+
+    canvas.addEventListener("mousemove", onMove);
+    canvas.addEventListener("touchmove", onMove, { passive: true });
+    canvas.addEventListener("mouseleave", onLeave);
+
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+      window.removeEventListener("resize", resize);
+      canvas.removeEventListener("mousemove", onMove);
+      canvas.removeEventListener("touchmove", onMove);
+      canvas.removeEventListener("mouseleave", onLeave);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: "absolute",
+        inset: 0,
+        width: "100%",
+        height: "100%",
+        pointerEvents: "all",
+      }}
+    />
+  );
+}
+
+// ═══════════════════════════════════════════════════════════
 // HOME
 // ═══════════════════════════════════════════════════════════
 
@@ -255,9 +382,12 @@ function Home({ addRef }) {
         minHeight: "100vh",
         display: "flex",
         alignItems: "center",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      <div>
+      <NeuralCanvas />
+      <div style={{ position: "relative", zIndex: 1 }}>
         <div
           ref={addRef}
           className="scroll-anim"
