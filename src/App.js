@@ -64,14 +64,26 @@ const PROJECTS = [
 
 const EXPERIENCE = [
   {
-    role: "IT Key User Global Production — Working Student",
+    role: "Software Engineer (Working Student)",
+    company: "BSH Home Appliances Group",
+    location: "Germany",
+    period: "Apr 2026 – Present",
+    points: [
+      "Developing backend services for the GQM-ED data tracing system using Python and REST APIs",
+      "Designing and documenting database schemas for production and quality metrics (e.g., PostgreSQL)",
+      "Containerizing services with Docker and contributing to CI/CD workflows for reliable deployments",
+      "Building KPI dashboards and technical documentation to communicate production metrics to engineering stakeholders",
+    ],
+  },
+  {
+    role: "Microsoft PowerApps Developer (Working Student)",
     company: "DEHN SE",
     location: "Germany",
-    period: "Dec 2025 – Present",
+    period: "Dec 2025 – Mar 2026",
     points: [
-      "Developing digital automation solutions for production systems using modern cloud technologies",
-      "Building AI and IoT solutions to optimize workflows from design through deployment",
-      "Designing technical documentation and training programs for production teams",
+      "Developed and maintained PowerApps solutions for production workflows, including forms, approvals, and dashboards",
+      "Automated production processes with Power Automate flows integrating approvals, SharePoint, and other data sources",
+      "Connected PowerApps to SharePoint, SQL and other backends to collect and visualize production data for KPIs",
     ],
   },
   {
@@ -80,9 +92,9 @@ const EXPERIENCE = [
     location: "Italy (Remote)",
     period: "Jul 2025 – Sep 2025",
     points: [
-      "Architected AI-powered wellness assistant using React, Supabase, GPT, and ElevenLabs APIs",
+      "Architected and developed AI-powered wellness assistant using React, Supabase, GPT, and ElevenLabs APIs",
       "Designed scalable chat-based UI with real-time response handling and efficient state management",
-      "Collaborated in agile early-stage startup backed by Ca'Foscari University",
+      "Collaborated in agile early-stage startup backed by Ca'Foscari University and Lovable Shipped program",
     ],
   },
   {
@@ -91,9 +103,29 @@ const EXPERIENCE = [
     location: "Italy",
     period: "Sep 2024 – Jun 2025",
     points: [
-      "Developed 5 production-ready iOS apps using Swift, SwiftUI, and CoreML",
-      "Led teams of 6 developers from ideation to App Store deployment",
-      "Completed comprehensive challenges in coding, project management, and UX design",
+      "Developed 5 production-ready iOS apps using Swift, SwiftUI, and CoreML through full development lifecycle",
+      "Led teams of 6 developers, driving technical solutions and managing project delivery from ideation to App Store deployment",
+      "Completed comprehensive challenges involving research, coding, project management, and user experience design",
+    ],
+  },
+  {
+    role: "Programming Instructor",
+    company: "Aga Khan Education Services",
+    location: "India",
+    period: "Jul 2023 – Aug 2023",
+    points: [
+      "Taught Python, web development, and Scratch to 110 students across multiple skill levels",
+      "Mentored students through 40+ real-world coding projects including portfolio websites and applications",
+    ],
+  },
+  {
+    role: "Research Assistant",
+    company: "UCA & Simon Fraser University",
+    location: "Canada (Online)",
+    period: "Oct 2022 – Mar 2023",
+    points: [
+      "Analyzed educational outcomes using Python, Pandas, and statistical modeling on 1,000+ student records",
+      "Identified 3 key factors impacting academic performance through data visualization and statistical analysis",
     ],
   },
   {
@@ -102,9 +134,9 @@ const EXPERIENCE = [
     location: "Tajikistan",
     period: "Jun 2022 – Aug 2022",
     points: [
-      "Built features for ReactJS/Go banking platform with focus on reliability",
-      "Optimized frontend and API performance, achieving 98% Lighthouse score",
-      "Participated in code reviews and wrote technical documentation",
+      "Built features for ReactJS/Go banking platform with focus on reliability and performance",
+      "Developed secure payment processing components in multi-tiered system architecture",
+      "Optimized frontend and API performance, achieving high Lighthouse score",
     ],
   },
 ];
@@ -252,9 +284,10 @@ function Home({ addRef }) {
             lineHeight: 1.7,
           }}
         >
-          M.Sc. Computer Science at University of Regensburg. Specializing in
-          Full-Stack Development, iOS, and AI solutions. Experienced with React,
-          Swift, Go, and cloud technologies. Interested in distributed systems,
+          Software Engineer at BSH Home Appliances Group & M.Sc. Computer Science
+          student at University of Regensburg. Specializing in backend development,
+          Full-Stack, iOS, and AI solutions. Experienced with Python, React, Swift,
+          Go, Docker, and cloud technologies. Interested in distributed systems,
           APIs, and scalable architectures.
         </div>
 
