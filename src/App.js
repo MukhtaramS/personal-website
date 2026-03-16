@@ -10,11 +10,10 @@ const SKILLS_ICONS = [
   { name: "Python", icon: "🐍" },
   { name: "JavaScript", icon: "⚡" },
   { name: "Swift", icon: "🍎" },
-  { name: "Java", icon: "☕" },
   { name: "Go", icon: "🔷" },
   { name: "React", icon: "⚛️" },
   { name: "SwiftUI", icon: "📱" },
-  { name: "Spring Boot", icon: "🌱" },
+  { name: "FastAPI", icon: "⚡" },
   { name: "Docker", icon: "🐳" },
   { name: "AWS", icon: "☁️" },
   { name: "PostgreSQL", icon: "🐘" },
@@ -22,9 +21,9 @@ const SKILLS_ICONS = [
 ];
 
 const SKILL_CATEGORIES = [
-  { title: "Languages", items: ["Python", "JavaScript", "Swift", "Java", "Go", "SQL"] },
+  { title: "Languages", items: ["Python", "JavaScript", "Swift", "Go", "SQL"] },
   { title: "Frontend", items: ["React.js", "SwiftUI"] },
-  { title: "Backend", items: ["Spring Boot", "Go", "Docker", "AWS"] },
+  { title: "Backend", items: ["FastAPI", "Go", "Docker", "AWS"] },
   { title: "Power Platform", items: ["Power Apps", "Power Automate", "Power BI", "Dataverse"] },
   { title: "Database", items: ["PostgreSQL", "MySQL", "Supabase"] },
   { title: "Tools", items: ["Git", "Docker", "AWS", "REST APIs"] },
